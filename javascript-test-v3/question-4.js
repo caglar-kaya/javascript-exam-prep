@@ -15,8 +15,12 @@
  *     email: '',
  *   }
  */
-const createContactList = (list = [], nameGetter = (item) => item.name, emailGetter = (item) => item.email ) => {
-    
+const createContactList = (list = [], nameGetter = (item) => item.name, emailGetter = (item) => item.email) => {
+    let contactList = [];
+    list.forEach(item => {
+        contactList.push({ name: nameGetter(item), email: emailGetter(item) });
+    });
+    return contactList;
 }
 
 

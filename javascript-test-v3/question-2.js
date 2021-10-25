@@ -16,11 +16,19 @@
  * The function returns `true` if the student has passed according to these criteria, `false` if not
  */
 const defaultExceptionInfo = {
-    dyslexia: false,
-    adhd: false,
+  dyslexia: false,
+  adhd: false,
 }
-const hasPassed = (scoreTheory = 0, passedPractical = false, exceptionInfo = defaultExceptionInfo) => {
 
+const hasPassed = (scoreTheory = 0, passedPractical = false, exceptionInfo = defaultExceptionInfo) => {
+  if (scoreTheory >= 90 && passedPractical === true) {
+    return true;
+  } else if ((exceptionInfo.dyslexia === true || exceptionInfo.adhd === true) && scoreTheory >= 80 && passedPractical === true) {
+    return true;
+  } else if ((exceptionInfo.dyslexia === true && exceptionInfo.adhd === true) && scoreTheory >= 70 && passedPractical === true) {
+    return true;
+  }
+  return false;
 }
 
 

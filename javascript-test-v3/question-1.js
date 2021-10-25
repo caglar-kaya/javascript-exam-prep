@@ -6,7 +6,16 @@
  * - Every book needs a title property that is of type string
  */
 
-
+const bookList = [
+  {
+    title: 'book1'
+  },
+  {
+    title: 'book2'
+  },
+  {
+    title: 'book3'
+  }];
 
 /**
  * TEST CODE. DO NOT EDIT

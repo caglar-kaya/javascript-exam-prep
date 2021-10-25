@@ -14,7 +14,10 @@
  * - the `userId` parameter is in the `likedByUserIds` array
  */
 const findRelevantComments = (comments, userId) => {
-
+    const result = comments.filter(item => {
+        return item.commenterId === userId || item.likedByUserIds.includes(userId);
+    });
+    return result;
 }
 
 /**
