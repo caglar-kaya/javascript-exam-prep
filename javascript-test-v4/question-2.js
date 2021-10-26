@@ -23,21 +23,34 @@
  */
 const reorderReviews = (reviews = [], users = []) => {
   // Create a new empty array for verified reviews
-
+  const verifiedReviews = [];
   // Create a new empty array for unverified reviews
-
+  const unverifiedReviews = [];
   // Create a new empty array to list verified user ids
-
+  const verifiedUserIds = [];
   // Go through the users array
-    // PER USER:
-    // If the user is verified, add the `id` of the user to the verified user ids array
-
+  // PER USER:
+  // If the user is verified, add the `id` of the user to the verified user ids array
+  for (const user of users) {
+    if (user.verified) {
+      verifiedUserIds.push(user.id);
+    }
+  }
   // Go through the reviews
-    // PER REVIEW:
-    // If the reviewerId property is in the verified users array, add to the verified reviews
-    // Otherwise add the review to the non-verified reviews
-
+  // PER REVIEW:
+  // If the reviewerId property is in the verified users array, add to the verified reviews
+  // Otherwise add the review to the non-verified reviews
+  for (const review of reviews) {
+    if (verifiedUserIds.includes(review.reviewerId)) {
+      verifiedReviews.push(review);
+    } else {
+      unverifiedReviews.push(review);
+    }
+  }
   // return a new array with first the verified reviews and then the non-verified reviews
+  const resultArray = [...verifiedReviews, ...unverifiedReviews];
+  console.log(resultArray);
+  return resultArray;
 };
 
 /**

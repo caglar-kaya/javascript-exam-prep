@@ -9,6 +9,16 @@
  */
 
 // Put your code here
+const users = [
+  {
+    name: 'Caglar',
+    isAdmin: true
+  },
+  {
+    name: 'Jack',
+    isAdmin: false
+  }
+];
 
 /**
  * TEST CODE. DO NOT EDIT

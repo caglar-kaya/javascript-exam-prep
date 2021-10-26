@@ -34,11 +34,32 @@ const MESSAGE = {
  */
 const getVacancyMessage = (vacancy, bookings = []) => {
   // Get the amount of bookings that are reserved for the vacancy (vacancyId in `booking` object is the same as the id in `vacancy` object)
-
+  let amountOfBooking = 0;
+  bookings.forEach(booking => {
+    if (booking.vacancyId === vacancy.id) {
+      amountOfBooking++;
+    }
+  });
   // Calculate the amount available for this vacancy
-
+  const availableVacancyAmount = vacancy.totalNumberAvailable - amountOfBooking;
   // Return the right message using the MESSAGE object
-
+  switch (availableVacancyAmount) {
+    case 0:
+      return MESSAGE.UNAVAILABLE;
+      break;
+    case 1:
+      return MESSAGE.ONLY1LEFT;
+      break;
+    case 2:
+      return MESSAGE.ONLYXLEFT(2);
+      break;
+    case 3:
+      return MESSAGE.ONLYXLEFT(3);
+      break;
+    default:
+      return MESSAGE.AVAILABLE;
+      break;
+  }
 };
 
 /**

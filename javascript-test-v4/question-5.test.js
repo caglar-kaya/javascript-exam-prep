@@ -29,7 +29,13 @@ const countElements = (arr = [], element) => {
  * To run the test make sure you have done an `npm install` command in your terminal and then run `npm t` or `npm run test`
  */
 describe("countElements", () => {
-  test("", () => {
-    expect(false).toBe(true);
+  test('should return 1', () => {
+    expect(countElements([1, 2, 3, 4, 5], 5)).toBe(1);
+  });
+  test('should return 3', () => {
+    expect(countElements([1, 5, 5, 4, 5], 5)).toBe(3);
+  });
+  test('should return 2', () => {
+    expect(countElements(['A', 'B', 'C', 'a', 'b', 'A'], 'A')).toBe(2);
   });
 });

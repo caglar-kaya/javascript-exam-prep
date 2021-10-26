@@ -19,10 +19,14 @@ const data = {
  */
 const addTodo = (task = "Relax") => {
   // Generate a new id
-
+  const id = toString(Date.now());
   // Add the todo object to `data.todos` list
-
+  data.todos.push({
+    id: id,
+    task: task,
+  });
   // Make sure you return the id that you gave the todos
+  return id;
 };
 
 /**
@@ -36,11 +40,19 @@ const removeTodo = (
   }
 ) => {
   // Check if there is a todo with the given id is in the `data.todos` list
-
+  const idHereArray = data.todos.filter(todo => {
+    return todo.id === id;
+  });
   // If there is no todo, call the given onError function
-
+  if (idHereArray.length === 0) {
+    onError();
+  }
   // Otherwise, remove the todo with the given id from the `data.todos` list
-
+  else {
+    data.todos = data.todos.filter(todo => {
+      return todo.id !== id;
+    });
+  }
 };
 
 /**
