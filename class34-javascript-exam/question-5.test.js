@@ -60,4 +60,16 @@ describe("combineAndDeduplicate", () => {
   it("function returns an array", () => {
     expect(typeof combineAndDeduplicate([2, 4, 6], [1, 3, 5])).toBe('object');
   });
+  // Test 7
+  it("('Hello', [1, 3, 5, 5, 5]) returns [1, 3, 5, 5, 5]", () => {
+    expect(combineAndDeduplicate('Hello', [1, 3, 5, 5, 5])).toEqual([1, 3, 5, 5, 5]);
+  });
+  // Test 8
+  it("([1, 3, 5, 5, 5], 'Hello') returns [1, 3, 5, 5, 5]", () => {
+    expect(combineAndDeduplicate([1, 3, 5, 5, 5], 'Hello')).toEqual([1, 3, 5, 5, 5]);
+  });
+  // Test 9
+  it("([1, 2, 2, 3, 5, 5, 6, 6,7], [1, 3, 4, 5, 5, 6, 7, 8, 9]) returns [1, 2, 3, 5, 6, 7, 4, 8, 9]", () => {
+    expect(combineAndDeduplicate([1, 2, 2, 3, 5, 5, 6, 6, 7], [1, 3, 4, 5, 5, 6, 7, 8, 9])).toEqual([1, 2, 3, 5, 6, 7, 4, 8, 9]);
+  });
 });
